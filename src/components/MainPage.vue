@@ -14,7 +14,8 @@
       </header>
       <main>
         <div class="cards">
-            <Card/>
+            <Card v-for="anime in animeList" 
+            :anime="anime"/>
         </div>
       </main>
 
@@ -29,12 +30,10 @@ const search_query = ref("");
 const animeList = ref([]);
 
 const handleSearch = async () => {
-  console.log("variavel: ",search_query.value)
-  animeList.value = await fetch(`https://api.jikan.moe/v4/anime?q=Naruto`)
+  animeList.value = await fetch(`https://api.jikan.moe/v4/anime?q=${search_query.value}`)
   .then(res => res.json())
   .then(data => data.results);
 
-  console.log(animeList.value)
 }
 
 </script>
