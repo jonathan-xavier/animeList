@@ -16,6 +16,7 @@
         <div class="cards">
             <Card v-for="anime in animeList" 
             :anime="anime"/>
+            
         </div>
       </main>
 
@@ -23,6 +24,7 @@
 </template>
 
 <script setup lang="ts">
+import axios from "axios";
 import Card from "../components/Card.vue"
 import { ref } from "vue";
 
@@ -30,10 +32,10 @@ const search_query = ref("");
 const animeList = ref([]);
 
 const handleSearch = async () => {
-  animeList.value = await fetch(`https://api.jikan.moe/v4/anime?q=${search_query.value}`)
-  .then(res => res.json())
-  .then(data => data.results);
 
+  const { data: {data} } =  await axios.get(`https://api.jikan.moe/v4/anime?q=${search_query.value}`)
+  animeList.value = data;
+  console.log(animeList.value);
 }
 
 </script>

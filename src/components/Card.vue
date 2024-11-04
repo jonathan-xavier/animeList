@@ -1,7 +1,7 @@
 <template>
     <div class="card">
         <a href="#" target="_blank">
-            <img :src="anime.image_url" alt="anime posters" />
+            <img :src="props.anime.images.webp.image_url" alt="anime posters" />
 
             <h3>{{ props.anime.title }}</h3>
         </a>
@@ -14,8 +14,13 @@ import { onMounted } from "vue";
 
 interface IAnime {
     title: string;
-    image_url: string;
+    images: {
+        webp: {
+            image_url:string
+        }
+    }
 }
+
 const props = defineProps<{
     anime: IAnime;
 }>();
@@ -23,7 +28,7 @@ const props = defineProps<{
 
 
 onMounted(() => {
-    console.log("ola: ",props);
+    console.log("ola: ", props.anime);
 })
 
 
