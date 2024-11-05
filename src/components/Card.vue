@@ -1,9 +1,9 @@
 <template>
     <div class="card">
-        <a href="#" target="_blank">
+        <a href="#" target="_blank" class="card-item">
             <img :src="props.anime.images.webp.image_url" alt="anime posters" />
 
-            <h3>{{ props.anime.title }}</h3>
+            <span>{{ props.anime.title }}</span>
         </a>
     </div>
 
@@ -35,35 +35,44 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
+
+.card-item{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    overflow: hidden;
+    text-decoration: none;
+    color: #5A7087;
+    font-weight: bold;
+    
+}
 .card {
-    flex: 1 1 33%;
-    width: 33%;
-    max-width: 33%;
+    max-width: 16%;
     padding: 0px 8px;
     margin-bottom: 16px;
+    // background-color: #5A7087;
 
     img {
-        width: 60%;
+       // width: 60%;
         height: 300px;
         object-fit: cover;
-        border-radius: 16px;
+        border-radius: 5px;
         box-shadow: 0px 4px 8px rgba(0, 0, 0, .15);
         transition: 0.4s;
     }
 
-    h3 {
-        color: #313131;
-        padding: 16px;
-        transition: .4s;
+    span{
+        padding: 10px;
     }
 
     &:hover {
         img {
-            transform: scale(1.05);
+           // transform: scale(1.05);
+           filter: brightness(125%);
         }
 
         h3 {
-            color: #24dc44
+            
         }
     }
 }

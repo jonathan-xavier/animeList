@@ -1,8 +1,7 @@
 <template>
   <div class="app">
       <header>
-          <h1>The<strong>Anime</strong>Database</h1>
-
+        <HeaderAnime/>
           <form class="search-box" @submit.prevent.enter="handleSearch">
             <input type="search" 
             class="search-field" 
@@ -27,6 +26,7 @@
 import axios from "axios";
 import Card from "../components/Card.vue"
 import { ref } from "vue";
+import HeaderAnime from "./HeaderAnime.vue";
 
 const search_query = ref("");
 const animeList = ref([]);
@@ -52,7 +52,7 @@ a{
 }
 
 main{
-  max-width: 1200px;
+  max-width: 80%;
   margin: 0 auto;
   padding-left: 30px;
   padding-right: 30px;
@@ -81,7 +81,7 @@ main{
 
   display: block;
   width: 100%;
-  max-width: 600px;
+  max-width: 200px;
   padding: 15px;
   border-radius: 5px;
   color: #313131;
@@ -106,7 +106,6 @@ main{
 .app{
 
   header{
-    padding-top: 50px;
     padding-bottom: 50px;
 
     h1{
