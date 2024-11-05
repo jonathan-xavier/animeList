@@ -28,7 +28,7 @@ const props = defineProps<{
 
 
 onMounted(() => {
-    console.log("ola: ", props.anime);
+    console.log(props);
 })
 
 
@@ -69,10 +69,6 @@ onMounted(() => {
         img {
            // transform: scale(1.05);
            filter: brightness(125%);
-        }
-
-        h3 {
-            
         }
     }
 }

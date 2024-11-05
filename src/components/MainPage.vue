@@ -5,7 +5,30 @@
           <form class="search-box" @submit.prevent.enter="handleSearch">
             <input type="search" 
             class="search-field" 
-            placeholder="Search for an anime..."
+            placeholder="Search anime..."
+            required
+            v-model="search_query"
+            />
+            <input type="search" 
+            class="search-field" 
+            placeholder="Genres"
+            required
+            />
+            <input type="search" 
+            class="search-field" 
+            placeholder="Year"
+            required
+            v-model="search_query"
+            />
+            <input type="search" 
+            class="search-field" 
+            placeholder="Season"
+            required
+            v-model="search_query"
+            />
+            <input type="search" 
+            class="search-field" 
+            placeholder="Format"
             required
             v-model="search_query"
             />
@@ -27,9 +50,9 @@ import axios from "axios";
 import Card from "../components/Card.vue"
 import { ref } from "vue";
 import HeaderAnime from "./HeaderAnime.vue";
-
 const search_query = ref("");
 const animeList = ref([]);
+
 
 const handleSearch = async () => {
 
@@ -68,6 +91,7 @@ main{
   justify-content: center;
   padding-left: 30px;
   padding-right: 3px;
+  gap: 2rem;
 }
 
 .search-field {
@@ -91,17 +115,17 @@ main{
   &::placeholder{
     color: #aaa;
   }
-  &:hover{
+  /* &:hover{
     color: #fff;
     background-color: #313131;
     box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.15);
-  }
+  } */
 
-  &:focus, &:valid {
+  /* &:focus, &:valid {
     color: #fff;
     background-color: #313131;
     box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.15);
-  }
+  } */
 }
 .app{
 
