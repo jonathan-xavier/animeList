@@ -32,7 +32,7 @@
 
 <script setup lang="ts">
 import axios from "axios";
-import Card from "../pages/cadr-page/Card.vue"
+import Card from "../pages/card-page/Card.vue"
 import { ref } from "vue";
 import HeaderAnime from "../pages/header-page/HeaderAnime.vue";
 import MenuAnime from "../pages/menu-page/MenuAnime.vue";
