@@ -2,6 +2,8 @@
   <div class="app">
       <header>
         <HeaderAnime/>
+        <div class="dropdown-buttons">
+        
           <form class="search-box" @submit.prevent.enter="handleSearch">
             <input type="search" 
             class="search-field" 
@@ -9,30 +11,13 @@
             required
             v-model="search_query"
             />
-            <input type="search" 
-            class="search-field" 
-            placeholder="Genres"
-            required
-            />
-            <input type="search" 
-            class="search-field" 
-            placeholder="Year"
-            required
-            v-model="search_query"
-            />
-            <input type="search" 
-            class="search-field" 
-            placeholder="Season"
-            required
-            v-model="search_query"
-            />
-            <input type="search" 
-            class="search-field" 
-            placeholder="Format"
-            required
-            v-model="search_query"
-            />
           </form>
+
+          <MenuAnime name-button="Genres"/>
+          <MenuAnime name-button="Year"/>
+          <MenuAnime name-button="Season"/>
+          <MenuAnime name-button="Format"/>
+        </div>
       </header>
       <main>
         <div class="cards">
@@ -47,9 +32,11 @@
 
 <script setup lang="ts">
 import axios from "axios";
-import Card from "../components/Card.vue"
+import Card from "../pages/cadr-page/Card.vue"
 import { ref } from "vue";
-import HeaderAnime from "./HeaderAnime.vue";
+import HeaderAnime from "../pages/header-page/HeaderAnime.vue";
+import MenuAnime from "../pages/menu-page/MenuAnime.vue";
+
 const search_query = ref("");
 const animeList = ref([]);
 
@@ -70,6 +57,16 @@ const handleSearch = async () => {
   box-sizing: border-box;
 }
 
+.dropdown-buttons{
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  width: 80%;
+  justify-content: center;
+  align-items: center;
+
+}
+
 a{
   text-decoration: none;
 }
@@ -87,11 +84,11 @@ main{
   }
 }
 .search-box{
-  display: flex;
+  /*display: flex;
   justify-content: center;
   padding-left: 30px;
   padding-right: 3px;
-  gap: 2rem;
+  gap*/
 }
 
 .search-field {
@@ -100,14 +97,14 @@ main{
   border: none;
   outline: none;
 
-  background-color: #f3f3f3;
+  background-color: #fff;
   box-shadow: 0px .5px .5px rgba(0, 0, 0, 0.15);
 
   display: block;
   width: 100%;
   max-width: 200px;
-  padding: 15px;
-  border-radius: 5px;
+  padding: 8px;
+  border-radius: 2px;
   color: #313131;
   font-size: 16px;
   transition: .4s;
