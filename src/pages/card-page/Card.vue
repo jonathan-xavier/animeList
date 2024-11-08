@@ -1,5 +1,5 @@
 <template>
-    <div class="card">
+    <div class="card" :style="changeWidth">
         <a href="#" target="_blank" class="card-link">
             <img :src="props.anime.images.webp.image_url" alt="anime posters" />
 
@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from "vue";
+import { onMounted, computed } from "vue";
 
 interface IAnime {
     title: string;
@@ -23,12 +23,16 @@ interface IAnime {
 
 const props = defineProps<{
     anime: IAnime;
+    gridClass:any;
 }>();
 
+const changeWidth = computed(() => {
+    return props.gridClass === "grid-side" ? "" : "width: 180px; !important";
+})
 
 
 onMounted(() => {
-    console.log(props);
+    console.log(props)
 })
 
 
@@ -49,18 +53,16 @@ onMounted(() => {
         overflow: hidden;
         text-overflow: ellipsis;
         height: 35px;
-    }
-    
-    
+    }   
 }
 .card {
-    width: 180px;
+    gap: 1rem;
     img {
         height: 250px;
         width: 100%;
         object-fit: fill;
         border-radius: 5px;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, .15);
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, .10);
         transition: 0.4s;
     }
 

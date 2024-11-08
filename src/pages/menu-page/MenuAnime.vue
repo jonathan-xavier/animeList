@@ -25,8 +25,8 @@ const props = defineProps({
 
 const options = [
     {
-        label: "Jonathan",
-        key:"jonathan"
+        label: "Anime data",
+        key:"Anime data"
     }
 ];
 

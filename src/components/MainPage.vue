@@ -3,7 +3,7 @@
       <header>
         <HeaderAnime/>
         <div class="dropdown-buttons">
-        
+          
           <form class="search-box" @submit.prevent.enter="handleSearch">
             <input type="search" 
             class="search-field" 
@@ -12,17 +12,21 @@
             v-model="search_query"
             />
           </form>
-
+          
           <MenuAnime name-button="Genres"/>
           <MenuAnime name-button="Year"/>
           <MenuAnime name-button="Season"/>
           <MenuAnime name-button="Format"/>
+
+          <i class="pi pi-table icons"  
+          style="font-size: 2rem; color: #ADC0D2;" @click="changeGrid"></i>
         </div>
+
       </header>
       <main>
-        <div class="cards">
+        <div :class="changeClass">
             <Card v-for="anime in animeList" 
-            :anime="anime"/>
+            :anime="anime" :grid-class="changeClass"/>
             
         </div>
       </main>
@@ -36,16 +40,21 @@ import Card from "../pages/card-page/Card.vue"
 import { ref } from "vue";
 import HeaderAnime from "../pages/header-page/HeaderAnime.vue";
 import MenuAnime from "../pages/menu-page/MenuAnime.vue";
+import 'primeicons/primeicons.css'
 
 const search_query = ref("");
 const animeList = ref([]);
-
+const changeClass = ref("cards");
 
 const handleSearch = async () => {
 
   const { data: {data} } =  await axios.get(`https://api.jikan.moe/v4/anime?q=${search_query.value}`)
   animeList.value = data;
   console.log(animeList.value);
+}
+
+const changeGrid = () => {
+  changeClass.value = "grid-side";
 }
 
 </script>
@@ -58,16 +67,28 @@ const handleSearch = async () => {
 }
 
 .dropdown-buttons{
+ 
   display: flex;
   flex-direction: row;
   gap: 1rem;
-  width: 80%;
+  width: 100%;
   justify-content: center;
   align-items: center;
+
+  i:hover{
+    transition: 0.4s;
+    color: #748899 !important;
+  }
 }
 
 a{
   text-decoration: none;
+}
+
+.grid-side{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
 }
 
 main{
