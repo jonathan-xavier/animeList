@@ -64,7 +64,6 @@ const handleSearch = async () => {
   width: 80%;
   justify-content: center;
   align-items: center;
-
 }
 
 a{
@@ -72,23 +71,18 @@ a{
 }
 
 main{
-  max-width: 80%;
+  max-width: 78%;
   margin: 0 auto;
   padding-left: 30px;
-  padding-right: 30px;
-
+  
   .cards{
-     display: flex;
-     flex-wrap: wrap;
-     margin: 0 -10px; 
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
   }
 }
 .search-box{
-  /*display: flex;
-  justify-content: center;
-  padding-left: 30px;
-  padding-right: 3px;
-  gap*/
+
 }
 
 .search-field {
@@ -112,17 +106,7 @@ main{
   &::placeholder{
     color: #aaa;
   }
-  /* &:hover{
-    color: #fff;
-    background-color: #313131;
-    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.15);
-  } */
 
-  /* &:focus, &:valid {
-    color: #fff;
-    background-color: #313131;
-    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.15);
-  } */
 }
 .app{
 

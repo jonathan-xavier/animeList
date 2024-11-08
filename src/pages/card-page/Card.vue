@@ -1,6 +1,6 @@
 <template>
     <div class="card">
-        <a href="#" target="_blank" class="card-item">
+        <a href="#" target="_blank" class="card-link">
             <img :src="props.anime.images.webp.image_url" alt="anime posters" />
 
             <span>{{ props.anime.title }}</span>
@@ -36,26 +36,29 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 
-.card-item{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    overflow: hidden;
+.card-link{
+    
     text-decoration: none;
     color: #5A7087;
     font-weight: bold;
+
+    span{
+        display: grid;
+        place-items: center;
+        text-transform: uppercase;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        height: 35px;
+    }
+    
     
 }
 .card {
-    max-width: 16%;
-    padding: 0px 8px;
-    margin-bottom: 16px;
-    // background-color: #5A7087;
-
+    width: 180px;
     img {
-       // width: 60%;
-        height: 300px;
-        object-fit: cover;
+        height: 250px;
+        width: 100%;
+        object-fit: fill;
         border-radius: 5px;
         box-shadow: 0px 4px 8px rgba(0, 0, 0, .15);
         transition: 0.4s;
@@ -68,7 +71,7 @@ onMounted(() => {
     &:hover {
         img {
            // transform: scale(1.05);
-           filter: brightness(125%);
+           filter: brightness(110%);
         }
     }
 }
