@@ -1,41 +1,32 @@
 <template>
-      <n-dropdown
-        placement="bottom-start"
-        trigger="hover"
-        size="small"
-        :options="options"
-        @select="handleSelect"
-      >
-      <n-button class="button-menu" color="#fff" text-color="#2B2D42">{{ props.nameButton }}</n-button>
-    </n-dropdown>
+  <div class="flex flex-wrap items-center gap-4">
+    <el-dropdown placement="bottom-start">
+      <el-button>{{ props.nameButton }}</el-button>
+      <template #dropdown>
+        <el-dropdown-menu v-for="(genre, index) in props.genres" :key="`genre-${index}`">
+          <template v-for="(genre_item) in genre" :key="`genre-${index}`">
+
+            <el-dropdown-item>{{ genre_item.name }}</el-dropdown-item>
+          </template>
+
+        </el-dropdown-menu>
+      </template>
+    </el-dropdown>
+  </div>
+
 </template>
 
 <script setup lang="ts">
-import {  NDropdown, NButton } from "naive-ui";
 import { defineProps } from "vue";
+import { IGenres } from "../../interfaces/anime";
 
 
-const props = defineProps({
-  nameButton: {
-    type: String,
-    default: ""
-  }
-});
+const props = defineProps<{
+  nameButton: String,
+  genres: IGenres[][],
+}>();
 
 
-const options = [
-    {
-        label: "Anime data",
-        key:"Anime data"
-    }
-];
-
-
-const handleSelect = (key: string | number) => {
-    console.log(key);
-}
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

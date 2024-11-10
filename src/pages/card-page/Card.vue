@@ -1,7 +1,7 @@
 <template>
-    <div class="card" :style="changeWidth">
+    <div class="card">
         <a href="#" target="_blank" class="card-link">
-            <img :src="props.anime.images.webp.image_url" alt="anime posters" />
+            <img :src="changeWidth" alt="anime posters" />
 
             <span>{{ props.anime.title }}</span>
         </a>
@@ -10,31 +10,24 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, computed } from "vue";
+import { computed } from "vue";
+import { ISearch } from "../../interfaces/anime";
 
-interface IAnime {
-    title: string;
-    images: {
-        webp: {
-            image_url:string
-        }
-    }
-}
+
 
 const props = defineProps<{
-    anime: IAnime;
+    anime: ISearch;
     gridClass:any;
 }>();
 
 const changeWidth = computed(() => {
-    return props.gridClass === "grid-side" ? "" : "width: 180px; !important";
-})
+    return props.gridClass === "grid-side" ? props.anime.images.webp?.large_image_url : props.anime.images.webp?.image_url;
+});
 
 
-onMounted(() => {
-    console.log(props)
-})
-
+// onMounted(() => {
+//     console.log(props.anime)
+// })
 
 </script>
 
@@ -57,13 +50,16 @@ onMounted(() => {
 }
 .card {
     gap: 1rem;
-    img {
-        height: 250px;
-        width: 100%;
-        object-fit: fill;
-        border-radius: 5px;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, .10);
-        transition: 0.4s;
+
+    a{
+        img {
+            height: 250px;
+            width: 100%;
+            object-fit: fill;
+            border-radius: 5px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, .10);
+            transition: 0.4s;
+        }
     }
 
     span{
